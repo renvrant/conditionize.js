@@ -1,5 +1,9 @@
 (function($) {
-  $.fn.conditionize = function(){ 
+  $.fn.conditionize = function(options){ 
+    
+     var settings = $.extend({
+        hideJS: true
+    }, options );
     
     $.fn.showOrHide = function(listenTo, listenFor, $section) {
       if ($(listenTo + ":checked").val() == listenFor) {
@@ -19,6 +23,10 @@
       $(listenTo).on('change', function() {
         $.fn.showOrHide(listenTo, listenFor, $section);
       });
+      //If setting was chosen, hide everything first...
+      if (settings.hideJS) {
+        $(this).hide();
+      }
       //Show based on current value on page load
       $.fn.showOrHide(listenTo, listenFor, $section);
     });
