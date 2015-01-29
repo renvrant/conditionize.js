@@ -7,10 +7,10 @@
     
     $.fn.showOrHide = function(listenTo, listenFor, $section) {
       if ($(listenTo + ":checked").val() == listenFor) {
-        $($section).slideDown();
+        $section.slideDown();
       }
       else {
-        $($section).slideUp();
+        $section.slideUp();
       }
     } 
 
