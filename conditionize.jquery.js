@@ -6,7 +6,10 @@
     }, options );
     
     $.fn.showOrHide = function(listenTo, listenFor, $section) {
-      if ($(listenTo + ":checked").val() == listenFor) {
+      if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
+        $section.slideDown();
+      }
+      else if ($(listenTo + ":checked").val() == listenFor) {
         $section.slideDown();
       }
       else {
