@@ -9,7 +9,7 @@
       if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
         $section.slideDown();
       }
-      else if ($(listenTo + ":checked").val() == listenFor) {
+      else if ($(listenTo + ":checked").filter(function(idx, elem){return elem.value == listenFor);}).length > 0) {
         $section.slideDown();
       }
       else {
