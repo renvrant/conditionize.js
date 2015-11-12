@@ -18,7 +18,7 @@
     } 
 
     return this.each( function() {
-      var listenTo = "[name=" + $(this).data('cond-option') + "]";
+      var listenTo = "[name=" + $(this).data('cond-option').replace( /(:|\.|\[|\]|,)/g, "\\$1" ) + "]";
       var listenFor = $(this).data('cond-value');
       var $section = $(this);
   
