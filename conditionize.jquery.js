@@ -36,7 +36,8 @@
     }
 
     return this.each( function() {
-      var listenTo = "[name=" + $(this).data('cond-option').replace( /(:|\.|\[|\]|,)/g, "\\$1" ) + "]";
+      var cleanSelector = $(this).data('cond-option').toString().replace(/(:|\.|\[|\]|,)/g, "\\$1");
+      var listenTo = (cleanSelector.substring(0,1)=='#'?cleanSelector:"[name=" + cleanSelector + "]");
       var listenFor = $(this).data('cond-value');
       var operator = $(this).data('cond-operator') ? $(this).data('cond-operator') : '==';
       var $section = $(this);
