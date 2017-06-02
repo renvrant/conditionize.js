@@ -20,6 +20,8 @@
             return valueIs >= valueShould;
         case '>':
             return valueIs > valueShould;
+        case 'in':
+            return valueShould.includes(valueIs);
       }
     }
 

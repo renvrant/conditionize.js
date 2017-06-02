@@ -34,6 +34,19 @@ If you'd prefer to use CSS to hide everything that is to be shown conditionally.
     hideJS: false
   });
 ```
+You can use conditional operator such as ==, !=, <=, <, >=, > or even 'in' for list of fields ...
+
+```html
+<select name="foo" id="foo">
+    <option>first</option>
+    <option>second</option>
+    <option>third</option>
+    <option>fourth</option>
+</select>
+<div class="conditional" data-cond-option="foo" data-cond-value="first,third" data-cond-operator="in">
+  Bar
+</div>
+```
 
 # Demo
 
