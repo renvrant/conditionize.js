@@ -128,12 +128,14 @@
             <p>
                 <label>or choose:</label>
                 <select class="select" name="example5">
-                    <option>Pick one!</option>
-                    <option value="yes">Yes!</option>
-                    <option value="no">No!</option>
+                    <option>Pick two or three!</option>
+                    <option value="one">One!</option>
+                    <option value="two">Two!</option>
+                    <option value="three">Three!</option>
+                    <option value="four">Four!</option>
                 </select>
             </p>
-            <div class="conditional" data-condition="example5 == 'yes'">
+            <div class="conditional" data-condition="['two','three'].includes(example5)">
                 Works with selects!
             </div>
             <p>

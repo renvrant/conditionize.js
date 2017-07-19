@@ -49,7 +49,7 @@ http://codepen.io/renvrant/pen/ogeeBY
 # conditionize.flexible.js
 A flexible version of conditionize.js.
 ## Set attributes
-Similar to conditionize.js. Just use data-condition instead of <data-cond-option, data-cond-value[, data-cond-operator]>... 
+Similar to conditionize.js. Just use data-condition instead of <data-cond-option, data-cond-value[, data-cond-operator]>. conditionize.flexible runs through all words in data-condition, and if it's a DOM element replaces it by its value. So, any javascript staement can be used.
 ```html
 <label><input type="checkbox" id="example1"> Are you sure?</label>
 <label><input type="checkbox" name="example2"> Really super sure?</label>
@@ -58,6 +58,19 @@ Similar to conditionize.js. Just use data-condition instead of <data-cond-option
 <p class="conditional" data-condition="#example1 == 'on' && example2 == 'on' && #example3 == 'yay'">
  Both are selected and YAY is typed!
 </p>
+<p>
+    <label>or choose:</label>
+    <select class="select" name="example5">
+        <option>Pick two or three!</option>
+        <option value="one">One!</option>
+        <option value="two">Two!</option>
+        <option value="three">Three!</option>
+        <option value="four">Four!</option>
+    </select>
+</p>
+<div class="conditional" data-condition="['two','three'].includes(example5)">
+    Works with selects!
+</div>
 ```
 ## Demo
 Download `flexible_demo.html` and `conditionize.flexible.jquery.js` in same folder. Open `flexible_demo.html` in your browser.
