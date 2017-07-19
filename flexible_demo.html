@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="conditionize.flexible.jquery.js"></script>
+        <style>
+            /* Just makin' it look nice. */
+            body {
+              background: #9fc7c0;
+            }
+            .conditional {
+              margin: 1em 0 0.5em;
+              border-top: 2px dotted #eee;
+              padding-top: 1em;
+              color: rgba(0,0,0,.7);
+              font-size: .9em;
+            }
+            .conditional > .conditional {
+              color: rgba(0,0,0,.5);
+            }
+
+            #demo {
+              text-align: center;
+              padding: 1.5em 3em;
+              background: #fff;
+              width: 60vw;
+              margin: 2em auto;
+              border-radius: .5em;
+              font: 24px/30px 'Open Sans', Arial, Verdana, serif;
+            }
+
+            label {
+              vertical-align: middle;
+              position: relative;
+            }
+
+            label + label {
+              margin-left: 1em;
+            }
+
+            input + span{
+                position: absolute;
+                left: 0;
+              top: 4px;
+                width: 15px;
+                height: 15px;
+              border: 2px solid #6ab5a8;
+            }
+
+            input[type=radio] + span {
+              border-radius: 50%;
+            }
+
+            input[type=radio]:checked + span {
+              background: rgba(106,181,169,1);
+              background: -moz-radial-gradient(center, ellipse cover, rgba(106,181,169,1) 44%, rgba(255,255,255,1) 45%, rgba(255,255,255,1) 46%, rgba(255,255,255,1) 55%);
+              background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(44%, rgba(106,181,169,1)), color-stop(45%, rgba(255,255,255,1)), color-stop(46%, rgba(255,255,255,1)), color-stop(55%, rgba(255,255,255,1)));
+              background: -webkit-radial-gradient(center, ellipse cover, rgba(106,181,169,1) 44%, rgba(255,255,255,1) 45%, rgba(255,255,255,1) 46%, rgba(255,255,255,1) 55%);
+              background: -o-radial-gradient(center, ellipse cover, rgba(106,181,169,1) 44%, rgba(255,255,255,1) 45%, rgba(255,255,255,1) 46%, rgba(255,255,255,1) 55%);
+              background: -ms-radial-gradient(center, ellipse cover, rgba(106,181,169,1) 44%, rgba(255,255,255,1) 45%, rgba(255,255,255,1) 46%, rgba(255,255,255,1) 55%);
+              background: radial-gradient(ellipse at center, rgba(106,181,169,1) 44%, rgba(255,255,255,1) 45%, rgba(255,255,255,1) 46%, rgba(255,255,255,1) 55%);
+              filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6ab5a9', endColorstr='#ffffff', GradientType=1 );
+            }
+
+            input[type=checkbox]:checked + span:after {
+              content: "\00d7";
+              font-weight: bold;
+              position: absolute;
+              top: -7px;
+              left: 1px;
+              font-size: 20px;
+              color: #6ab5a8;
+            }
+             
+            input[type=radio],
+            input[type=checkbox] {
+                /*hide the radio button*/
+                filter:alpha(opacity=0);
+                -moz-opacity:0;
+                -khtml-opacity: 0;
+                opacity: 0;
+            }
+
+            select,
+            input[type=text] {
+              border-radius: 5px;
+              padding: 6px 10px;
+              border: 2px solid #9fc7c0;
+              font-color: #666;
+              font-size: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="demo">
+            <label><input type="radio" name="example1" value="yes"><span></span> Yes</label>
+            <label><input type="radio" name="example1" value="no"><span></span> No</label>
+
+            <div class="conditional" data-condition="example1 == 'yes'">
+                <p>Try to check both and type yay!</p>
+                <label><input type="checkbox" name="example2" id="example2"><span></span> Are you sure?</label>
+                <label><input type="checkbox" name="example3" id="example3"><span></span> Really super sure?</label>
+
+                <div class="conditional" data-condition="#example2 == 'on'">
+                    Hooray! Works by ID!
+                </div>
+                <div class="conditional" data-condition="example3 == 'on'">
+                    Don't get cocky!
+                </div>
+                <p class="conditional" data-condition="#example2 == 'on' && example3 == 'on' && #example6 == 'yay'">
+                    Both are selected and YAY is typed! Great job!
+                </p>
+            </div>
+
+            <div class="conditional" data-condition="example1 == 'no'">
+                <p>That's a shame. Will you change your mind?</p>
+
+                <label><input type="radio" name="example4" value="yes"><span></span> Yes</label>
+                <label><input type="radio" name="example4" value="no"><span></span> No</label>
+
+                <div class="conditional" data-condition="example4 == 'yes'">
+                    Great!
+                </div>
+            </div>
+
+            <p>
+                <label>or choose:</label>
+                <select class="select" name="example5">
+                    <option>Pick two or three!</option>
+                    <option value="one">One!</option>
+                    <option value="two">Two!</option>
+                    <option value="three">Three!</option>
+                    <option value="four">Four!</option>
+                </select>
+            </p>
+            <div class="conditional" data-condition="['two','three'].includes(example5)">
+                Works with selects!
+            </div>
+            <p>
+                <label>or type:</label>
+                <input type="text" id="example6" name="example6" placeholder="yay">
+            </p>
+            <div class="conditional" data-condition="#example6 == 'yay'">
+                Works with text input by ID!
+            </div>
+        </div>
+    </body>
+    <script type='text/javascript'>
+        $('.conditional').conditionize();
+    </script>
+</html>
