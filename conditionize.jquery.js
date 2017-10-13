@@ -21,7 +21,7 @@
         case '>':
             return valueIs > valueShould;
         case 'in':
-            return valueShould.includes(valueIs);
+            return valueIs !== '' && valueShould.includes(valueIs);
       }
     }
 
