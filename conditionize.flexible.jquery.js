@@ -30,7 +30,7 @@
       // First get all (distinct) used field/inputs
       var re = /(#?\w+)/ig;
       var match = re.exec(cond);
-      var inputs = {}, e = "", name ="";
+      var inputs = {}, e = "", name ="", tmp_re = "";
       while(match !== null) {
         name = match[1];
         e = (name.substring(0,1)=='#' ? name : "[name=" + name + "]");
