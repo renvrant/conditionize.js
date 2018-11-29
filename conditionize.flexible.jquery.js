@@ -1,4 +1,4 @@
-/* jquery - flexible conditionize - v1.1 - https://github.com/rguliev/conditionize.js - by Rustam Guliev at 2017-07-19*/
+/* jquery - flexible conditionize - v1.2 - https://github.com/rguliev/conditionize.js - by Rustam Guliev at 2018-11-30*/
 (function($) {
   $.fn.conditionize = function(options) {
 
@@ -26,9 +26,10 @@
     return this.each( function() {
       var $section = $(this);
       var cond = $(this).data('condition');
-      
+      // This is a regex suffix that will make sure that the string is not inside quotes
+      var ifNotInQuotes = "(?:(?=([^\"]*\"[^\"]*\")*[^\"]*$)(?=([^']*'[^']*')*[^']*$))";
       // First get all (distinct) used field/inputs
-      var re = /(#?\w+)/ig;
+      var re = new RegExp("(#?[0-9a-z-_]*[a-z][0-9a-z-_]*)" + ifNotInQuotes, 'gi');
       var match = re.exec(cond);
       var inputs = {}, e = "", name ="", tmp_re = "";
       while(match !== null) {
@@ -43,7 +44,7 @@
       // Replace fields names/ids by $().val()
       for (name in inputs) {
         e = inputs[name];
-        tmp_re = new RegExp("(" + name + ")\\b","g")
+        tmp_re = new RegExp("(" + name + ")\\b" + ifNotInQuotes, 'g')
         if ( ($(e).attr('type')=='radio') || ($(e).attr('type')=='checkbox') ) {
           cond = cond.replace(tmp_re,"$('" + e + ":checked').val()");
         }

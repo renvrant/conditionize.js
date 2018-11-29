@@ -1,12 +1,13 @@
 {
   "name": "conditionize",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/renvrant/conditionize.js",
   "authors": [
-    "Renee Vrantsidis <renee@renvrant.com>"
+    "Renee Vrantsidis <renee@renvrant.com>",
+    "Rustam Guliev <glvrst@gmail.com>"
   ],
-  "description": "A small jQuery plugin for handling showing and hiding things conditionally based on input - typically groups of form fields.",
-  "main": "conditionize.jquery.js",
+  "description": "A small and flexible jQuery plugin for handling showing and hiding things conditionally based on input - typically groups of form fields.",
+  "main": "conditionize.flexible.jquery.js",
   "moduleType": [
     "globals"
   ],

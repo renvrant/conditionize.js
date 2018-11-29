@@ -26,24 +26,44 @@ Improved version of conditionize.js.
 
 ## Set attributes
 Just set one attribute `data-condition`. conditionize.flexible runs through all words in `data-condition`, and if it's a DOM element replaces it by its value. So, any javascript staement can be used, i.e. even conditions like `['str1','str2'].includes(myinput)`. Fields can be reffered eather by id like `#input_id == 1` or by name: `input_name == 1`.
+**Supported names/ids:** Any string consisting of lower and upper case letters(`a-z` and `A-Z`), digits(`0-9`), underscores(`_`) and hyphen(`-`). At least one character(`a-z` or `A-Z`) is required.
+**NOTE:** This is different from HTML5 standard. HTML5 allows any character except any type of space character. And, it must not be empty string.
+**NOT:** Strings inside double or single quotes are ignored, i.e. you can even write a condition like "myInputName == 'myInputName'"
 
 ```html
-<p><label><input type="checkbox" id="example1"> Are you sure?</label></p>
-<p class="conditional" data-condition="#example1"><label><input type="checkbox" name="example2"> Really super sure?</label></p>
-<p class="conditional" data-condition="#example1 && example2"><label>Then type "yay": </label><input type="text"     id="example3" placeholder="yay"></p>
-<!-- This will be shown only if BOTH examle1 and examle2 are checked AND 'yay' typed in examle3 -->
-<p class="conditional msg" data-condition="#example1 && example2 && #example3 == 'yay'"> Both are selected and YAY is typed!</p>
-<p>
-  <label>Pick two or three:</label>
-  <select class="select" name="example5">
-    <option>....</option>
-    <option value="one">One!</option>
-    <option value="two">Two!</option>
-    <option value="three">Three!</option>
-    <option value="four">Four!</option>
-  </select>
-</p>
-<div class="conditional msg" data-condition="['two','three'].includes(example5)">See?! It works with selects!</div>
+    <p><label><input type="checkbox" id="example1"> Are you sure?</label></p>
+    <!-- This will be open only if #example1 is checked -->
+    <p class="conditional" data-condition="#example1">
+        <label><input type="checkbox" name="example2"> Really super sure?</label>
+    </p>
+    <!-- This will be open only if both #example1 example2 are checked -->
+    <p class="conditional" data-condition="#example1 && example2">
+        <label>Then type "yay": </label>
+        <input type="text" name="yay" placeholder="yay">
+    </p>
+    <!-- This will be shown only if BOTH examle1 and examle2 are checked 
+           AND 'yay' typed in examle3 -->
+    <p class="conditional msg" 
+       data-condition="#example1 && example2 && yay == 'yay'">
+        Both are selected and YAY is typed!
+    </p>
+    <!-- This is also works with selects -->
+    <p>
+        <label>Pick two or three:</label>
+        <select class="select" name="-example_5">
+            <option>....</option>
+            <option value="one">One!</option>
+            <option value="two">Two!</option>
+            <option value="three">Three!</option>
+            <option value="four">Four!</option>
+        </select>
+    </p>
+    <!-- NOTE: IE browsers do not support *.includes(...) function. 
+        So on production, it is better to use (-example_5 == 'two') || (-example_5 == 'three') -->
+    <div class="conditional msg" 
+         data-condition="(-example_5 == 'two') || (-example_5 == '-example_5')">
+        See?! It works with selects!
+    </div>
 ```
 
 ## Demo
