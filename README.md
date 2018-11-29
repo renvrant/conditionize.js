@@ -31,7 +31,7 @@ Just set one attribute `data-condition`. conditionize.flexible runs through all 
 
 **NOTE:** This is different from HTML5 standard. HTML5 allows any character except any type of space character. And, it must not be empty string.
 
-**NOT:** Strings inside double or single quotes are ignored, i.e. you can even write a condition like "myInputName == 'myInputName'"
+**NOTE:** Strings inside double or single quotes are ignored, i.e. you can even write a condition like "myInputName == 'myInputName'"
 
 ```html
     <p><label><input type="checkbox" id="example1"> Are you sure?</label></p>
