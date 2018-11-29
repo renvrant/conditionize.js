@@ -26,8 +26,11 @@ Improved version of conditionize.js.
 
 ## Set attributes
 Just set one attribute `data-condition`. conditionize.flexible runs through all words in `data-condition`, and if it's a DOM element replaces it by its value. So, any javascript staement can be used, i.e. even conditions like `['str1','str2'].includes(myinput)`. Fields can be reffered eather by id like `#input_id == 1` or by name: `input_name == 1`.
+
 **Supported names/ids:** Any string consisting of lower and upper case letters(`a-z` and `A-Z`), digits(`0-9`), underscores(`_`) and hyphen(`-`). At least one character(`a-z` or `A-Z`) is required.
+
 **NOTE:** This is different from HTML5 standard. HTML5 allows any character except any type of space character. And, it must not be empty string.
+
 **NOT:** Strings inside double or single quotes are ignored, i.e. you can even write a condition like "myInputName == 'myInputName'"
 
 ```html
