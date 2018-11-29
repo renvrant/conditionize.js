@@ -61,7 +61,7 @@ Just set one attribute `data-condition`. conditionize.flexible runs through all 
     <!-- NOTE: IE browsers do not support *.includes(...) function. 
         So on production, it is better to use (-example_5 == 'two') || (-example_5 == 'three') -->
     <div class="conditional msg" 
-         data-condition="(-example_5 == 'two') || (-example_5 == '-example_5')">
+         data-condition="['two','three'].includes(-example_5)">
         See?! It works with selects!
     </div>
 ```
