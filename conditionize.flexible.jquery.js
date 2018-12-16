@@ -29,12 +29,12 @@
       // This is a regex suffix that will make sure that the string is not inside quotes
       var ifNotInQuotes = "(?:(?=([^\"]*\"[^\"]*\")*[^\"]*$)(?=([^']*'[^']*')*[^']*$))";
       // First get all (distinct) used field/inputs
-      var re = new RegExp("(#?[0-9a-z-_]*[a-z][0-9a-z-_]*)" + ifNotInQuotes, 'gi');
+      var re = new RegExp("(#?[0-9a-z-_\[]*[a-z][0-9a-z-_\[\]]*)" + ifNotInQuotes, 'gi');
       var match = re.exec(cond);
       var inputs = {}, e = "", name ="", tmp_re = "";
       while(match !== null) {
         name = match[1];
-        e = (name.substring(0,1)=='#' ? name : "[name=" + name + "]");
+        e = (name.substring(0,1)=='#' ? name : '[name="' + name + '"]');
         if ( $(e).length && ! (name in inputs) ) {
             inputs[name] = e;
         }
@@ -44,7 +44,7 @@
       // Replace fields names/ids by $().val()
       for (name in inputs) {
         e = inputs[name];
-        tmp_re = new RegExp("(" + name + ")\\b" + ifNotInQuotes, 'g')
+        tmp_re = new RegExp("(" + name.replace('\[', '\\[').replace('\]', '\\]') + ")\\s" + ifNotInQuotes, 'g')
         if ( ($(e).attr('type')=='radio') || ($(e).attr('type')=='checkbox') ) {
           cond = cond.replace(tmp_re,"$('" + e + ":checked').val()");
         }
