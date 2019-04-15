@@ -1,6 +1,8 @@
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+## :warning: Please migrate to [`conditionize2.js`](https://github.com/rguliev/conditionize2.js)! This fork is maintained, documented, and has many updated features. 
 
-:warning: It is recommended to use [`conditionize2.js`](https://github.com/rguliev/conditionize2.js) fork which is maintained, has more features and good docs.
+### This repo will no longer be maintained.
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ----
 
