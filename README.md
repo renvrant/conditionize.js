@@ -1,3 +1,9 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+:warning: It is recommended to use [`conditionize2.js`](https://github.com/rguliev/conditionize2.js) fork which is maintained, has more features and good docs.
+
+----
+
 Small jQuery plugins for handling showing and hiding things conditionally based on input - typically groups of form fields. It works using data attributes to keep all of the name/values for inputs directly in the markup and saves you the trouble of having to manually show/hide a bunch of stuff through JS, as well as improving maintenance if you need to change the name or value of an input you were listening to. Conditionize supports the following field types: checkboxes, radio buttons, selects, and all HTML5 input types.
 
 Contains two files with plugins `conditionize.js` (__old version__) and `conditionize.flexible.js` (__new version__). Old version is saved for compatibility reasons since they use different data attributes. 
@@ -22,6 +28,10 @@ If you'd prefer to use CSS to hide everything that is to be shown conditionally.
 ```
 
 # conditionize.flexible.js
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+:warning: It is recommended to use [`conditionize2.js`](https://github.com/rguliev/conditionize2.js) fork which is maintained, has more features and good docs.
+
 Improved version of conditionize.js.
 
 ## Set attributes
